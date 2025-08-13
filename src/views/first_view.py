@@ -3,8 +3,8 @@ def introduction_page():
         Oi meu chapa.
 
         Escolhe ai q q tu quer:
-        * 1 - 1
-        * 2 - dois
+        * 1 - Registrar
+        * 2 - Visualizar
         * 5 - sair
     """
     print(message)
