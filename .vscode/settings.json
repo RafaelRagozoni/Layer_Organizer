@@ -5,5 +5,23 @@
         },
         "**/__pycache__": true,
         "**/*.pytest_cache": true
+    },
+    "editor.tokenColorCustomizations": {
+        "textMateRules":   [
+            {
+                "scope": "docstring.heading.placeholder, docstring.variable.end",
+                "settings": {
+                    "fontStyle": "bold underline",
+                    "foreground": "#75771048"
+                }
+            },
+            {
+                "scope": "docstring.variable.placeholder",
+                "settings": {
+                    "fontStyle": "bold underline",
+                    "foreground": "#898b1888"
+                }
+            }
+        ]
     }
 }
