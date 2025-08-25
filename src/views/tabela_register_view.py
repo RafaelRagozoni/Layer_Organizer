@@ -20,7 +20,7 @@ class TabelaRegisterView:
         completion = input("Qual completion tabela deseja colocar: ")
 
         new_tabela_informations = {
-            "tabela_id": tabela_id,
+            "id": tabela_id,
             "name": name,
             "completion": completion,
         }

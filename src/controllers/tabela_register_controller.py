@@ -1,4 +1,6 @@
 from typing import Dict
+from src.models.respository.tabela_repository import tabela_repository
+from src.models.entities.tabela import Tabela
 
 class TabelaRegisterController:
     def register(self, new_tabel_informations: Dict) -> Dict:
@@ -12,7 +14,7 @@ class TabelaRegisterController:
         """
         try:
             self.__validate_fields(new_tabel_informations)
-            ##TODO: Enviar para models para cadastro de dados
+            self.__create_and_store_tabela_register(new_tabel_informations)
             response = self.__format_response(new_tabel_informations)
             return {
                     "sucess": True,
@@ -24,7 +26,6 @@ class TabelaRegisterController:
                 "error": str(exception)
             }
 
-    
     def __validate_fields(self, new_tabel_informations: Dict) -> None:
         """
         Valida os campos enviados no cadastro. 
@@ -40,7 +41,7 @@ class TabelaRegisterController:
             raise Exception("Campo nome da tabela incorreto")
 
         try:
-            int(new_tabel_informations["tabela_id"])
+            int(new_tabel_informations["id"])
         except:
             raise Exception("ID deve ser um número!")
         
@@ -48,6 +49,15 @@ class TabelaRegisterController:
             int(new_tabel_informations["completion"])
         except:
             raise Exception("compleção deve ser um numero")
+        
+    def __create_and_store_tabela_register(self, new_tabela_informations: Dict)-> None:
+        name = new_tabela_informations["name"]
+        id = new_tabela_informations["id"]
+        completion = new_tabela_informations["completion"]
+
+        new_tabela = Tabela(name,id,completion)
+        tabela_repository.registry_tabela(new_tabela)
+        return
         
     def __format_response(self, new_tabel_informations: Dict) -> Dict:
         """
